@@ -1,0 +1,32 @@
+.action {
+  display: flex;
+  justify-content: center;
+  justify-self: end;
+}
+.card {
+  display: flex;
+  flex-direction: row;
+  margin: 2rem;
+}
+.details {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+.media {
+  min-width: 40%;
+}
+.icon {
+  margin-right: 5px;
+}
+.card button {
+  color: white;
+}
+@media (max-width: 768px) {
+  .card {
+    flex-direction: column;
+  }
+  .details {
+    gap: 1rem;
+  }
+}

@@ -1,0 +1,22 @@
+.item {
+  display: flex;
+  font-size: 1.5rem;
+  align-items: center;
+  flex-direction: row;
+  text-align: center;
+}
+
+.item span {
+  display: block;
+}
+
+.icon {
+  margin-right: 0.5rem;
+}
+
+@media (min-width: 768px) {
+  .item {
+    align-items: flex-start;
+    text-align: left;
+  }
+}
