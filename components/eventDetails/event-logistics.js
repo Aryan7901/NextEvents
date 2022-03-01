@@ -31,16 +31,22 @@ function EventLogistics(props) {
         </div>
       </div>
       <ul className={classes.list}>
-        <LogisticsItem icon={<GoLocation color="#aefff8" />}>
-          <Typography color="secondary" variant="date">
-            {humanReadableDate}
-          </Typography>
-        </LogisticsItem>
-        <LogisticsItem icon={<BsCalendarDate color="#aefff8" />}>
-          <Typography color="secondary" variant="address" component={"address"}>
-            {addressText}
-          </Typography>
-        </LogisticsItem>
+        <div>
+          <LogisticsItem icon={<GoLocation color="#aefff8" />}>
+            <Typography color="secondary" variant="date">
+              {humanReadableDate}
+            </Typography>
+          </LogisticsItem>
+          <LogisticsItem icon={<BsCalendarDate color="#aefff8" />}>
+            <Typography
+              color="secondary"
+              variant="address"
+              component={"address"}
+            >
+              {addressText}
+            </Typography>
+          </LogisticsItem>
+        </div>
       </ul>
     </Container>
   );

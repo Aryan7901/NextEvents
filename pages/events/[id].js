@@ -1,13 +1,13 @@
-import { useRouter } from "next/router";
 import React from "react";
 import { Fragment } from "react/cjs/react.production.min";
 import EventLogistics from "../../components/eventDetails/event-logistics";
 import EventSummary from "../../components/eventDetails/event-summary";
-import { fetchData, transformData } from "../../utils";
+import { fetchData } from "../../utils";
 import EventContent from "../../components/eventDetails/event-content";
 import { Typography } from "@mui/material";
 import ErrorAlert from "../../components/ui/error-alert";
 import CustomBtn from "../../components/ui/LinkBtn";
+import Head from "next/head";
 function EventDetails({ event }) {
   if (!event) {
     return (
@@ -19,6 +19,11 @@ function EventDetails({ event }) {
   }
   return (
     <Fragment>
+      <Head>
+        <title>{event.title}</title>
+        <meta name="description" content={event.description} />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
       <EventSummary title={event.title} />
       <EventLogistics
         date={event.date}

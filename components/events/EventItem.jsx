@@ -19,7 +19,7 @@ function EventItem(props) {
     month: "long",
     year: "numeric",
   });
-  const formattedLocation = event.location.split(", ");
+  const formattedLocation = event.location.replace(", ", "\n");
   return (
     <Card className={classes.card} component="li">
       <CardMedia className={classes.media}>
@@ -47,23 +47,17 @@ function EventItem(props) {
             </span>
             {readableDate}
           </Typography>
-          <div>
+
+          <Typography
+            variant="address"
+            color={"text.secondary"}
+            component="address"
+          >
             <span className={classes.icon}>
               <GoLocation />
             </span>
-            {formattedLocation.map((field, index) => {
-              return (
-                <Typography
-                  variant="address"
-                  color={"text.secondary"}
-                  component="address"
-                  key={index}
-                >
-                  {field}
-                </Typography>
-              );
-            })}
-          </div>
+            {formattedLocation}
+          </Typography>
         </CardContent>
         <CardActions className={classes.action}>
           <CustomBtn link={`/events/${event.id}`} text="Explore Event" />

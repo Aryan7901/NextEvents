@@ -22,6 +22,9 @@
 .card button {
   color: white;
 }
+.card address {
+  white-space: pre;
+}
 @media (max-width: 768px) {
   .card {
     flex-direction: column;
@@ -30,8 +33,11 @@
     gap: 1rem;
   }
 }
-@media (max-width: 460px) {
+@media (max-width: 350px) {
   .card {
     margin: 2rem 0;
+  }
+  .card address {
+    white-space: pre-wrap;
   }
 }

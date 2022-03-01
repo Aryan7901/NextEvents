@@ -1,12 +1,11 @@
 import { Typography } from "@mui/material";
 import React, { Fragment } from "react";
 import EventList from "../../components/events/EventList";
-import { fetchData, getFilteredEvents } from "../../utils";
-import { useRouter } from "next/router";
+import { fetchData } from "../../utils";
 import ErrorAlert from "../../components/ui/error-alert";
 import ResultsTitle from "../../components/ui/results-title";
 import CustomBtn from "../../components/ui/LinkBtn";
-
+import Head from "next/head";
 function FilteredEvents(props) {
   const { hasError, filteredEvents, year, month } = props;
   // const router = useRouter();
@@ -45,6 +44,14 @@ function FilteredEvents(props) {
 
   return (
     <Fragment>
+      <Head>
+        <title>{`Events on ${month}/${year}`}</title>
+        <meta
+          name="description"
+          content={`Filtered Events by ${month}/${year}`}
+        />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
       <ResultsTitle date={date} />
       <EventList items={filteredEvents} />
     </Fragment>

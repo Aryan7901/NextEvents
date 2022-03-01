@@ -1,6 +1,7 @@
 import "../styles/globals.css";
 import { createTheme, ThemeProvider } from "@mui/material";
 import NavBar from "../components/ui/NavBar";
+import Head from "next/head";
 
 const theme = createTheme({
   palette: {
@@ -20,6 +21,10 @@ const theme = createTheme({
 function MyApp({ Component, pageProps }) {
   return (
     <ThemeProvider theme={theme}>
+      <Head>
+        <title>Next Events</title>
+        <meta name="description" content="Next Events" />
+      </Head>
       <NavBar />
       <Component {...pageProps} />
     </ThemeProvider>
