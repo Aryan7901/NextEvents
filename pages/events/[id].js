@@ -1,11 +1,11 @@
 import React from "react";
 import { Fragment } from "react/cjs/react.production.min";
-import EventLogistics from "../../components/eventDetails/event-logistics";
-import EventSummary from "../../components/eventDetails/event-summary";
+import EventLogistics from "../../components/eventDetails/EventLogistics";
+import EventSummary from "../../components/eventDetails/EventSummary";
 import { fetchData } from "../../utils";
-import EventContent from "../../components/eventDetails/event-content";
+import EventContent from "../../components/eventDetails/EventContent";
 import { Typography } from "@mui/material";
-import ErrorAlert from "../../components/ui/error-alert";
+import ErrorAlert from "../../components/ui/ErrorAlert";
 import CustomBtn from "../../components/ui/LinkBtn";
 import Head from "next/head";
 function EventDetails({ event }) {

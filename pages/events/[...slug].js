@@ -2,8 +2,8 @@ import { Typography } from "@mui/material";
 import React, { Fragment } from "react";
 import EventList from "../../components/events/EventList";
 import { fetchData } from "../../utils";
-import ErrorAlert from "../../components/ui/error-alert";
-import ResultsTitle from "../../components/ui/results-title";
+import ErrorAlert from "../../components/ui/ErrorAlert";
+import ResultsTitle from "../../components/ui/ResultsTitle";
 import CustomBtn from "../../components/ui/LinkBtn";
 import Head from "next/head";
 function FilteredEvents(props) {

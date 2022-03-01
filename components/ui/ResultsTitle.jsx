@@ -1,8 +1,6 @@
 import { Typography } from "@mui/material";
-import { Button } from "@mui/material";
-import Link from "next/link";
 import CustomBtn from "./LinkBtn";
-import classes from "./results-title.module.css";
+import classes from "./ResultsTitle.module.css";
 
 function ResultsTitle(props) {
   const { date } = props;
