@@ -1,33 +1,26 @@
 import { Typography } from "@mui/material";
 import React, { Fragment } from "react";
 import EventList from "../../components/events/EventList";
-import { getFilteredEvents } from "../../dummydata";
+import { fetchData, getFilteredEvents } from "../../utils";
 import { useRouter } from "next/router";
 import ErrorAlert from "../../components/ui/error-alert";
 import ResultsTitle from "../../components/ui/results-title";
 import CustomBtn from "../../components/ui/LinkBtn";
 
-function FilteredEvents() {
-  const router = useRouter();
-  const filterData = router.query.slug;
-  if (!filterData) {
-    return (
-      <ErrorAlert>
-        <Typography className="center">Loading...</Typography>
-        <CustomBtn link="/events" text="Show All Events" />
-      </ErrorAlert>
-    );
-  }
-  const year = +filterData[0];
-  const month = +filterData[1];
-  if (
-    isNaN(year) ||
-    isNaN(month) ||
-    year > 2030 ||
-    year < 2021 ||
-    month < 1 ||
-    month > 12
-  ) {
+function FilteredEvents(props) {
+  const { hasError, filteredEvents, year, month } = props;
+  // const router = useRouter();
+  // const filterData = router.query.slug;
+  // if (!filterData) {
+  //   return (
+  //     <ErrorAlert>
+  //       <Typography className="center">Loading...</Typography>
+  //       <CustomBtn link="/events" text="Show All Events" />
+  //     </ErrorAlert>
+  //   );
+  // }
+
+  if (hasError) {
     return (
       <ErrorAlert>
         <Typography className="center">
@@ -37,7 +30,6 @@ function FilteredEvents() {
       </ErrorAlert>
     );
   }
-  const filteredEvents = getFilteredEvents({ year, month });
   if (!filteredEvents || filteredEvents.length === 0) {
     return (
       <ErrorAlert>
@@ -50,6 +42,7 @@ function FilteredEvents() {
     );
   }
   const date = new Date(year, month - 1);
+
   return (
     <Fragment>
       <ResultsTitle date={date} />
@@ -57,5 +50,38 @@ function FilteredEvents() {
     </Fragment>
   );
 }
+export async function getServerSideProps(context) {
+  const filterData = context.params.slug;
+  const year = +filterData[0];
+  const month = +filterData[1];
 
+  if (
+    isNaN(year) ||
+    isNaN(month) ||
+    year > 2030 ||
+    year < 2021 ||
+    month < 1 ||
+    month > 12
+  ) {
+    return {
+      props: {
+        hasError: true,
+      },
+    };
+  }
+  const events = await fetchData(process.env.BACKEND);
+  let filteredEvents = events.filter((event) => {
+    const eventDate = new Date(event.date);
+    return (
+      eventDate.getFullYear() === year && eventDate.getMonth() === month - 1
+    );
+  });
+  return {
+    props: {
+      filteredEvents,
+      year,
+      month,
+    },
+  };
+}
 export default FilteredEvents;

@@ -30,3 +30,8 @@
     gap: 1rem;
   }
 }
+@media (max-width: 460px) {
+  .card {
+    margin: 2rem 0;
+  }
+}

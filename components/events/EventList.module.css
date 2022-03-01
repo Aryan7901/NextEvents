@@ -3,3 +3,8 @@
   max-width: 60rem;
   margin: 5rem auto;
 }
+@media (max-width: 460px) {
+  .list {
+    width: 100%;
+  }
+}

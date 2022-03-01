@@ -39,7 +39,6 @@ function EventItem(props) {
           <Typography
             sx={{ fontWeight: "bold" }}
             variant="body1"
-            component={"date"}
             color="text.secondary"
             gutterBottom
           >
@@ -67,7 +66,7 @@ function EventItem(props) {
           </div>
         </CardContent>
         <CardActions className={classes.action}>
-          <CustomBtn link={`/events/${event.id}`} text="Explore Events" />
+          <CustomBtn link={`/events/${event.id}`} text="Explore Event" />
         </CardActions>
       </Container>
     </Card>

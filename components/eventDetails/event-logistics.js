@@ -18,15 +18,17 @@ function EventLogistics(props) {
 
   return (
     <Container className={classes.logistics}>
-      <div className={classes.image}>
-        <Image
-          src={`/${image}`}
-          alt={imageAlt}
-          layout="responsive"
-          className={classes.img}
-          width="20rem"
-          height="20rem"
-        />
+      <div className={classes.container}>
+        <div className={classes.image}>
+          <Image
+            src={`/${image}`}
+            alt={imageAlt}
+            layout="responsive"
+            className={classes.img}
+            width="20rem"
+            height="20rem"
+          />
+        </div>
       </div>
       <ul className={classes.list}>
         <LogisticsItem icon={<GoLocation color="#aefff8" />}>
