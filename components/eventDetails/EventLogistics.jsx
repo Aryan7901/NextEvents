@@ -21,7 +21,7 @@ function EventLogistics(props) {
       <div className={classes.container}>
         <div className={classes.image}>
           <Image
-            src={`/${image}`}
+            src={image}
             alt={imageAlt}
             layout="responsive"
             className={classes.img}

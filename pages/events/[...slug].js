@@ -1,11 +1,12 @@
 import { Typography } from "@mui/material";
 import React, { Fragment } from "react";
 import EventList from "../../components/events/EventList";
-import { fetchData } from "../../utils";
+
 import ErrorAlert from "../../components/ui/ErrorAlert";
 import ResultsTitle from "../../components/ui/ResultsTitle";
 import CustomBtn from "../../components/ui/LinkBtn";
 import Head from "next/head";
+import { eventsSearch } from "../api/_utils";
 function FilteredEvents(props) {
   const { hasError, filteredEvents, year, month } = props;
   // const router = useRouter();
@@ -76,13 +77,11 @@ export async function getServerSideProps(context) {
       },
     };
   }
-  const events = await fetchData(process.env.BACKEND);
-  let filteredEvents = events.filter((event) => {
-    const eventDate = new Date(event.date);
-    return (
-      eventDate.getFullYear() === year && eventDate.getMonth() === month - 1
-    );
-  });
+  let regExp;
+  if (month < 10) regExp = `^${year}-0${month}`;
+  else regExp = `^${year}-${month}`;
+  const filteredEvents = await eventsSearch({ date: new RegExp(regExp) });
+
   return {
     props: {
       filteredEvents,

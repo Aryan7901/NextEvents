@@ -1,0 +1,20 @@
+.newsletter {
+  margin: 3rem auto;
+  width: 90%;
+  max-width: 20rem;
+}
+
+.newsletter h5 {
+  text-align: center;
+}
+
+.control {
+  display: flex;
+}
+
+.control input {
+  flex: 1;
+}
+.control button {
+  color: white;
+}

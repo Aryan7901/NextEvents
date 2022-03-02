@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import EventList from "../../components/events/EventList";
 import EventSearch from "../../components/events/EventSearch";
-import { fetchData } from "../../utils";
+import { eventsSearch } from "../api/_utils";
 import { useRouter } from "next/router";
 import Head from "next/head";
 function AllEvents(props) {
@@ -23,7 +23,7 @@ function AllEvents(props) {
   );
 }
 export async function getStaticProps() {
-  const events = await fetchData(process.env.BACKEND);
+  const events = await eventsSearch({});
   return {
     props: {
       events: events,

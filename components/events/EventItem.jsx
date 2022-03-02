@@ -10,9 +10,8 @@ import Typography from "@mui/material/Typography";
 import { GoLocation } from "react-icons/go";
 import { BsCalendarDate } from "react-icons/bs";
 import { Container } from "@mui/material";
-import { useRouter } from "next/router";
+
 function EventItem(props) {
-  const router = useRouter();
   const { event } = props;
   const readableDate = new Date(event.date).toLocaleDateString("en-US", {
     day: "numeric",
@@ -24,7 +23,7 @@ function EventItem(props) {
     <Card className={classes.card} component="li">
       <CardMedia className={classes.media}>
         <Image
-          src={"/" + event.image}
+          src={event.image}
           alt="Event Image"
           width={256}
           height={200}
@@ -60,7 +59,7 @@ function EventItem(props) {
           </Typography>
         </CardContent>
         <CardActions className={classes.action}>
-          <CustomBtn link={`/events/${event.id}`} text="Explore Event" />
+          <CustomBtn link={`/events/${event._id}`} text="Explore Event" />
         </CardActions>
       </Container>
     </Card>
