@@ -15,6 +15,7 @@
 }
 .media {
   min-width: 40%;
+  object-fit: cover;
 }
 .icon {
   margin-right: 5px;

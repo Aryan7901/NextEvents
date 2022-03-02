@@ -7,7 +7,7 @@ function CommentList({ eventId }) {
   const { data, error } = useSWR(`/api/comments/${eventId}`, fetcher);
 
   if (!data && !error) {
-    return <Typography>Loading....</Typography>;
+    return <Alert severity="info">Loading....</Alert>;
   } else if (error) {
     return <Alert severity="error">Error loading comments</Alert>;
   } else

@@ -19,6 +19,7 @@ export async function eventsSearch(query) {
   } catch (err) {
     console.log(err.message);
     client.close();
+    return err.message;
   }
   return events;
 }

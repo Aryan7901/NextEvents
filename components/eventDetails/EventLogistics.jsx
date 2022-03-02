@@ -3,7 +3,13 @@
 import LogisticsItem from "./LogisticsItem";
 import classes from "./EventLogistics.module.css";
 import Image from "next/image";
-import { Container, Typography } from "@mui/material";
+import {
+  Card,
+  Container,
+  Typography,
+  CardMedia,
+  CardContent,
+} from "@mui/material";
 import { GoLocation } from "react-icons/go";
 import { BsCalendarDate } from "react-icons/bs";
 function EventLogistics(props) {
@@ -17,26 +23,31 @@ function EventLogistics(props) {
   const addressText = address.replace(", ", "\n");
 
   return (
-    <Container className={classes.logistics}>
+    <Card
+      className={classes.logistics}
+      sx={{ backgroundColor: "#2b2b2b", borderRadius: "8px" }}
+    >
       <div className={classes.container}>
-        <div className={classes.image}>
+        <CardMedia className={classes.image}>
           <Image
             src={image}
             alt={imageAlt}
             layout="responsive"
-            className={classes.img}
             width="20rem"
             height="20rem"
+            priority
           />
-        </div>
+        </CardMedia>
       </div>
-      <ul className={classes.list}>
-        <div>
+      <CardContent className={classes.list} component="ul">
+        <li>
           <LogisticsItem icon={<GoLocation color="#aefff8" />}>
             <Typography color="secondary" variant="date">
               {humanReadableDate}
             </Typography>
           </LogisticsItem>
+        </li>
+        <li>
           <LogisticsItem icon={<BsCalendarDate color="#aefff8" />}>
             <Typography
               color="secondary"
@@ -46,9 +57,9 @@ function EventLogistics(props) {
               {addressText}
             </Typography>
           </LogisticsItem>
-        </div>
-      </ul>
-    </Container>
+        </li>
+      </CardContent>
+    </Card>
   );
 }
 

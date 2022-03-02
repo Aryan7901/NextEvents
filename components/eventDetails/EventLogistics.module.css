@@ -1,6 +1,6 @@
 .logistics {
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-  border-radius: 6px;
+  border-radius: 8px;
   background-color: #2b2b2b;
   padding: 2rem;
   max-width: 50rem;
@@ -26,8 +26,6 @@
 }
 
 .image img {
-  width: 10rem;
-  height: 10rem;
   object-fit: cover;
 }
 
@@ -38,7 +36,7 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  width: auto;
+  width: 100%;
 }
 
 .logistics address {
@@ -59,17 +57,19 @@
     width: 20rem;
     height: 20rem;
   }
-
-  .image img {
-    width: 20rem;
-    height: 20rem;
+  .list {
+    align-items: flex-start;
   }
 }
 @media (max-width: 450px) {
   .logistics {
     width: 100%;
+    padding: 1rem;
   }
   .logistics address {
     white-space: pre-wrap;
+  }
+  .list {
+    margin: 0;
   }
 }
